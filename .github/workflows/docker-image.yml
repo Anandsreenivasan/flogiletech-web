@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --tag flogile:3.2
+    - name:  Docker login
+      run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
+    - name: Tag the Docker image
+      run: docker image tag flogile:3.2 anandsreenivasan/flogile:latest  
+    - name: Push the Docker image
+      run: docker push anandsreenivasan/flogile:latest
