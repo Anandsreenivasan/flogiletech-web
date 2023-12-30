@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --tag flogile:3.2
+      run: docker build . --tag flogile:$(date +%s)
     - name:  Docker login
       run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
     - name: Tag the Docker image
-      run: docker image tag flogile:3.2 anandsreenivasan/flogile:latest  
+      run: docker image tag flogile:$(date +%s) anandsreenivasan/flogile:$(date +%s) 
     - name: Push the Docker image
-      run: docker push anandsreenivasan/flogile:latest
+      run: docker push anandsreenivasan/flogile:$(date +%s)
