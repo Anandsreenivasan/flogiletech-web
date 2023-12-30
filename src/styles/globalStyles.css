@@ -1,0 +1,108 @@
+/* Below animations are fore modal created using React-Modal */
+.ReactModal__Overlay {
+    transition: transform 300ms ease-in-out;
+    transition-delay: 100ms;
+    transform: scale(0);
+    /* transform: translateY(-150%); */
+}
+
+.ReactModal__Overlay--after-open{
+    transform: scale(1);
+    /* transform: translateY(0%); */
+}
+
+.ReactModal__Overlay--before-close{
+    transform: scale(0);
+    /* transform: translateY(-150%); */
+}
+* {
+    font-family: 'Lato',sans-serif;
+}
+.fontStroke{
+    color: white;
+            font-size: 40px;
+            text-shadow: -2px 2px 0 #000,
+                          2px 2px 0 #000,
+                         2px -2px 0 #000,
+                        -2px -2px 0 #000;
+}
+
+.navbar-translate {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    background-color: white;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+    
+    
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -o-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1); }
+  #bodyClick {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: auto;
+    right: 230px;
+    content: "";
+    z-index: 1029;
+    overflow-x: hidden; }
+
+    .navbar{
+        color:white;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        
+        -ms-flex-pack: justify !important;
+        justify-content: space-between !important;
+        
+        
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1); 
+    
+    }
+      
+    .navbar.colorChange{
+        color: #44337A;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        
+        -ms-flex-pack: justify !important;
+        justify-content: space-between !important;
+        background-color: white;
+        
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -o-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1); 
+    
+    }
+
+    
+ 
