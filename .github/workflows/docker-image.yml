@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: nc check
+      run: nc -zv 3.145.105.194 22
     - name: Build the Docker image
       run: docker build . --tag flogile:$(date +%y%m%d)
     - name:  Docker login
