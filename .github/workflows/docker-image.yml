@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI & CD
 
 on:
   push:
@@ -14,20 +14,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: nc check
-      run: nc -zv 3.142.84.76 22
-    - name: create ssh
+    - name: Build the Docker image
+      run: docker build . --tag flogile:$(date +%y%m%d)
+    - name:  Docker login
+      run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
+    - name: Tag the Docker image
+      run: docker image tag flogile:$(date +%y%m%d) anandsreenivasan/flogile:$(date +%y%m%d)
+    - name: Push the Docker image
+      run: docker push anandsreenivasan/flogile:$(date +%y%m%d)   
+  deploy:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+#    - name: nc check
+#      run: nc -zv 3.142.84.76 22
+    - name: Create ssh Private KEY on fly
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
-    - name: cat 
+    - name: Set Private KEY access 
       run: chmod 0600 rsa_id
-    - name: Ansible Playbook execution 
+    - name: Runing Ansible Playbook execution...
       run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$(date +%y%m%d)"
       
-  #  - name: Build the Docker image
-  #    run: docker build . --tag flogile:$(date +%y%m%d)
-  #  - name:  Docker login
-  #    run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
-  #  - name: Tag the Docker image
-  #    run: docker image tag flogile:$(date +%y%m%d) anandsreenivasan/flogile:$(date +%y%m%d)
-  #  - name: Push the Docker image
-  #    run: docker push anandsreenivasan/flogile:$(date +%y%m%d)
+
