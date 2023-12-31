@@ -19,7 +19,9 @@ jobs:
     - name: create ssh
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
     - name: cat 
-      run: cat rsa_id
+      run: chmod 0600 rsa_id
+    - name: ssh 
+      run: ssh -i rsa_id root@3.145.105.194
       
   #  - name: Build the Docker image
   #    run: docker build . --tag flogile:$(date +%y%m%d)
