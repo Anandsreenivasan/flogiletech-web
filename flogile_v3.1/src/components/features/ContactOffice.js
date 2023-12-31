@@ -80,7 +80,7 @@ export default ({
             
             <Subheading>Email</Subheading>
             
-            <h5><a href={"mailto: contact@flogile.com"}>contact@flogile.com </a></h5>
+            <h5><a href={"mailto: contact@flogiletechnologies.com"}>contact@flogiletechnologies.com </a></h5>
             
           </TextContent>
         </TextColumn>
