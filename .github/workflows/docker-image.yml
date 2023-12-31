@@ -21,7 +21,7 @@ jobs:
     - name: cat 
       run: chmod 0600 rsa_id
     - name: Ansible Playbook execution 
-      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -vvv
+      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$(date +%y%m%d)"
       
   #  - name: Build the Docker image
   #    run: docker build . --tag flogile:$(date +%y%m%d)
