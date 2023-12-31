@@ -78,7 +78,7 @@ export default () => {
           
             <Heading >
             <h1 class="fontStroke">
-                        Welcome To Flogile
+                        Welcome To Flogiletechnologies
             </h1>
             </Heading>
             <Notification> ONE-STOP SOLUTION FOR DIGITAL TRANSFORMATION.</Notification>
