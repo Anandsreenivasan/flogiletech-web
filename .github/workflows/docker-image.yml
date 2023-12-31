@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: nc check
-      run: nc -zv 3.145.105.194 22
+      run: nc -zv 3.142.84.76 22
     - name: create ssh
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
     - name: cat 
