@@ -20,8 +20,8 @@ jobs:
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
     - name: cat 
       run: chmod 0600 rsa_id
-    - name: ssh 
-      run: ssh -i rsa_id root@3.145.105.194
+    - name: Ansible Playbook execution 
+      run: ansible-playbook -i iac/hosts main.yml
       
   #  - name: Build the Docker image
   #    run: docker build . --tag flogile:$(date +%y%m%d)
