@@ -81,7 +81,7 @@ export default () => {
                         Welcome To Flogiletechnologies
             </h1>
             </Heading>
-            <Notification> ONE-STOP SOLUTION FOR DIGITAL TRANSFORMATION.</Notification>
+            <Notification> ONE-STOP SOLUTION FOR DIGITAL TRANSFORMATION..</Notification>
           </LeftColumn>
           
         </TwoColumn>
