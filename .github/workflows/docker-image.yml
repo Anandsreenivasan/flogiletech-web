@@ -16,11 +16,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: nc check
       run: nc -zv 3.145.105.194 22
-    - name: Build the Docker image
-      run: docker build . --tag flogile:$(date +%y%m%d)
-    - name:  Docker login
-      run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
-    - name: Tag the Docker image
-      run: docker image tag flogile:$(date +%y%m%d) anandsreenivasan/flogile:$(date +%y%m%d)
-    - name: Push the Docker image
-      run: docker push anandsreenivasan/flogile:$(date +%y%m%d)
+    - name: ansible
+      run: ansible --version
+  #  - name: Build the Docker image
+  #    run: docker build . --tag flogile:$(date +%y%m%d)
+  #  - name:  Docker login
+  #    run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
+  #  - name: Tag the Docker image
+  #    run: docker image tag flogile:$(date +%y%m%d) anandsreenivasan/flogile:$(date +%y%m%d)
+  #  - name: Push the Docker image
+  #    run: docker push anandsreenivasan/flogile:$(date +%y%m%d)
