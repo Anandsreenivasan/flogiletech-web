@@ -17,13 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --tag flogile:${{ DATA_TIME_VAR }}
+      run: docker build . --tag flogile:$DATA_TIME_VAR
     - name:  Docker login
       run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
     - name: Tag the Docker image
-      run: docker image tag flogile:${{ DATA_TIME_VAR }} anandsreenivasan/flogile:${{ DATA_TIME_VAR }}
+      run: docker image tag flogile:$DATA_TIME_VAR anandsreenivasan/flogile:$DATA_TIME_VAR
     - name: Push the Docker image
-      run: docker push anandsreenivasan/flogile:${{ DATA_TIME_VAR }} 
+      run: docker push anandsreenivasan/flogile:$DATA_TIME_VAR 
     - name: Deployment Started... 
       run: echo -e "       Deployment Started...            "
     - name: Create ssh Private KEY on fly
@@ -31,6 +31,6 @@ jobs:
     - name: Set Private KEY access 
       run: chmod 0600 rsa_id
     - name: Runing Ansible Playbook execution...
-      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:${{ DATA_TIME_VAR }}"
+      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$DATA_TIME_VAR"
       
 
