@@ -19,7 +19,7 @@ jobs:
     - name:  Docker login
       run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
     - name: Tag the Docker image
-      run: docker image tag flogile:$(date +%y%m%d) anandsreenivasan/flogile:$(date +%y%m%d%h)
+      run: docker image tag flogile:$(date +%y%m%d%h) anandsreenivasan/flogile:$(date +%y%m%d%h)
     - name: Push the Docker image
       run: docker push anandsreenivasan/flogile:$(date +%y%m%d%h) 
     - name: Deployment Started... 
@@ -29,6 +29,6 @@ jobs:
     - name: Set Private KEY access 
       run: chmod 0600 rsa_id
     - name: Runing Ansible Playbook execution...
-      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$(date +%y%m%d)"
+      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$(date +%y%m%d%h)"
       
 
