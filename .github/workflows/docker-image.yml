@@ -11,24 +11,26 @@ jobs:
   build_and_deploy:
 
     runs-on: ubuntu-latest
+    env:
+      DATA_TIME_VAR: "$(date +%s)"
 
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --tag flogile:$(date +%y%m%d%h)
+      run: docker build . --tag flogile:${{ DATA_TIME_VAR }}
     - name:  Docker login
       run: docker login -u anandsreenivasan -p ${{ secrets.DOCKER_HUB_PASS }} docker.io
     - name: Tag the Docker image
-      run: docker image tag flogile:$(date +%y%m%d%h) anandsreenivasan/flogile:$(date +%y%m%d%h)
+      run: docker image tag flogile:${{ DATA_TIME_VAR }} anandsreenivasan/flogile:${{ DATA_TIME_VAR }}
     - name: Push the Docker image
-      run: docker push anandsreenivasan/flogile:$(date +%y%m%d%h) 
+      run: docker push anandsreenivasan/flogile:${{ DATA_TIME_VAR }} 
     - name: Deployment Started... 
-      run: echo -e "e\[44m       Deployment Started...            \e[0m"
+      run: echo -e "       Deployment Started...            "
     - name: Create ssh Private KEY on fly
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
     - name: Set Private KEY access 
       run: chmod 0600 rsa_id
     - name: Runing Ansible Playbook execution...
-      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:$(date +%y%m%d%h)"
+      run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:${{ DATA_TIME_VAR }}"
       
 
