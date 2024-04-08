@@ -12,7 +12,7 @@
       ping:
     - name: Flogile running web container remove 
       shell: docker ps -q | xargs -I {} docker rm -f {}
-    - name: Docker pull new Flogile web image
-      shell: docker pull {{ image_tag }}
+    - name: Remove old Flogile web image
+      shell: docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
     - name: Start new Flogile web container
       shell: docker run -dit -p 80:3000 -p 443:443 {{ image_tag }}
