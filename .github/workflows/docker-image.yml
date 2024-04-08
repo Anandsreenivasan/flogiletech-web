@@ -32,7 +32,7 @@ jobs:
     - name: Create ssh Private KEY on fly
       run: echo "${{ secrets.AWS_SSH_PRIV_KEY }}" >rsa_id
     - name: Set Private KEY access 
-      run: chmod 0600 rsa_id && sleep 300
+      run: chmod 0600 rsa_id
     - name: Runing Ansible Playbook execution...
       run: ANSIBLE_DISPLAY_SKIPPED_HOSTS=False ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i iac/hosts main.yml -e image_tag="anandsreenivasan/flogile:${{ steps.set_date.outputs.date }}"
       
